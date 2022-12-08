@@ -26,7 +26,7 @@ This study aims to carry out vulnerability analysis and recognize the key nodes 
 
    2. edges
 
-      calculate the load[2], try diff stratigies
+      calculate the load[2], try diff stratigies( There may be some wronng with the stratigy of SPC.Have asked the author)
 
 2. Evaluate the damage.
 
