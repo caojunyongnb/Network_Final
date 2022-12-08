@@ -24,14 +24,21 @@ This study aims to carry out vulnerability analysis and recognize the key nodes 
 
       calculate the centrality[1] [2], and try different attack stratigies
 
+      For the node, we can take the node type into account, such as generator load, costume(but not too much, lets check the data)
+
    2. edges
 
       calculate the load[2], try diff stratigies( There may be some wronng with the stratigy of SPC.Have asked the author)
+      
+      '''this is sample so do this First!!!!!!!!!'''
+      
+      
 
 2. Evaluate the damage.
 
    1. maximum connected graph (this is feasible)
-   2. load model and do the iteration[2] ( much more conplex and I will check the feasibility)
+   2. load model and do the iteration, the [2] load model is much more sample, so we use this  
+   3. *Vulnerability Index*[1]
 3. The paper just show the final status of the network. However, the collapse of power system is a dynamic process, So we can show the iteration process.  Therefore, the recovery can focus on how to slow down the collapse process. 
 <img width="227" alt="image" src="https://user-images.githubusercontent.com/48615762/206497566-cdd157db-e57b-4dd1-a0a9-3d24b0c3cb8c.png">
 
