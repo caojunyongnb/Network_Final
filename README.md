@@ -12,9 +12,17 @@ This study aims to carry out vulnerability analysis and recognize the key nodes 
 
 [4] Cetinay, Hale, Karel Devriendt, and Piet Van Mieghem. "Nodal vulnerability to targeted attacks in power grids." Applied network science 3.1 (2018): 1-19.
 
+# Data
+
+SNAP repository https://snap.stanford.edu/data/
+
+UCI Network Data Repository https://networkdata.ics.uci.edu/
+
+Network Repository https://networkrepository.com/
+
+Netzschleuder https://networks.skewed.de/
+
 # Idea
-
-
 
 
 
