@@ -24,6 +24,99 @@ Netzschleuder https://networks.skewed.de/
 
 # Idea
 
+1. replicate 
+2. cluster detection????( such as if this is some country data, can we detect the city)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Nope
+
 
 
 1. Attack the network from two perspective
