@@ -32,7 +32,7 @@ This study aims to carry out vulnerability analysis and recognize the key nodes 
 
    1. maximum connected graph (this is feasible)
    2. load model and do the iteration[2] ( much more conplex and I will check the feasibility)
-3. the collapse of power system is a dynamic process, Therefore, the recovery will focus on how to slow down this speed. 
+3. The paper just show the final status of the network. However, the collapse of power system is a dynamic process, So we can show the iteration process.  Therefore, the recovery can focus on how to slow down the collapse process. 
 <img width="227" alt="image" src="https://user-images.githubusercontent.com/48615762/206497566-cdd157db-e57b-4dd1-a0a9-3d24b0c3cb8c.png">
 
 
