@@ -1,0 +1,2 @@
+Figs present the attack results for US power gird and reference networks under four intentional attack strategy£º SPC HL LL and node attack. Results indicate that all networks are
+more robust against edge attack with HL strategy. 
