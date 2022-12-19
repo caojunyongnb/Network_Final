@@ -49,6 +49,3 @@ if __name__=='__main__':
     print(len(result['ba'][2].edges()))
     print(len(result['ba'][3].edges()))
     print(len(result['ba'][4].edges()))
-
-# 对比三种模型的结构
-# 进行attack

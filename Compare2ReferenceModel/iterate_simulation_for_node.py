@@ -37,10 +37,7 @@ class attack_simulation_algorithm_node():
         for node in node_top10_list:
             edge_list=edge_list+list(load_model.edges(node))
         return edge_list
-    '''
-    这就是我说的那个报错，如果直接获取边对应的property value的话会因为边那俩节点的顺序报错（那个函数假定的图是有向图，这里就是尝试不同的顺序
-    然后来返回数据
-    '''
+
     def get_edge_property_value(self,property_dict,value):
         # when try to get the edge property, the function refered the graph as directed graph, but we use underected graph
         # so sometimes the order will lead to the failure
@@ -54,10 +51,7 @@ class attack_simulation_algorithm_node():
             return result
         return result
 
-    '''
-    这个函数是对图进行初始化，给每条边加一个property ：if_break， 然后后面break的时候如果这个if_break为0就是不破坏，为1就是破坏
-    另外这个函数就是上面不是选出来了需要三种策略下破坏的初始边，这里就把那些初始边标注为1
-    '''
+
     def initial_break(self,name):
         import networkx as nx
         #feed into the nodelist and break the edges at the begin
@@ -68,9 +62,7 @@ class attack_simulation_algorithm_node():
             nx.set_edge_attributes(graph, {tuple(edge): {'if_break':1}})
         return graph
 
-    '''
-    这里就是把图里所有if_break为1的边给破坏掉，返回一个破坏之后的图，另外返回一个字典，字典的key是edge，value是该edge对应的current load
-    '''
+
     def break_the_edge(self,graph):
         # remove the edge where the 'if_break' is 1, and return the graph and node has been removed and there current load
         edge_tb_remove=[]
@@ -88,11 +80,7 @@ class attack_simulation_algorithm_node():
         self.last_broken_edge_dict = edge_be_removed
         self.last_graph = graph
         return graph, edge_be_removed
-    '''
-    这一步就是输入破坏后的图以及上面那个字典，然后根据这个字典对周边的边进行新的current_load的更新
-    或许会出现的问题，如果没出现就不要考虑了，如果一个edge的周边所有的edge都崩塌了，就孤立这一个edge然后如果他也崩塌咋办（就没法distribute了，
-    目前代码没考虑，想了一下出现的概率应该不大，所以可以暂时不考虑
-    '''
+
     def refresh_load(self,graph,broken_edge_dict):
         # this will input a graph, and broken_edge_dict, and return the redistributed graph
         # broken_edge_dict {edge:current_load}
@@ -127,10 +115,6 @@ class attack_simulation_algorithm_node():
         self.last_graph = graph
         return graph
 
-    '''
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    就是我说的那个停止条件，在下面iterate的时候记得留一下这块的位置
-    '''
 
     def stop_sign(self,break_dict):
         #print(len(self.last_graph.edges))
@@ -172,7 +156,7 @@ class attack_simulation_algorithm_node():
 if __name__=='__main__':
 
     from load_model import load_model
-    # 这个就是创建了那个loadmodel的对象然后返回的load_graph就是我们需要的负载模型，
+
     import networkx as nx
     def calculate_centrality(load_model,strategy):
         if strategy=='BB':
@@ -192,7 +176,7 @@ if __name__=='__main__':
         return model
 
     criterion = attack_simulation_algorithm_node(load_graph)
-    # DB就是degree centrality BB就是Between centrality，BB慢很多，我这边就改了一下选择策略返回edgeList那块，其他完全没变
+
 
     db_centrality=calculate_centrality(load_graph,'DB')
     bb_centrality = calculate_centrality(load_graph, 'BB')
