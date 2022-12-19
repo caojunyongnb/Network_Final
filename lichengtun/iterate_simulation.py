@@ -44,11 +44,6 @@ class attack_simulation_algorithm():
 
         return edge_list
 
-
-    '''
-    这就是我说的那个报错，如果直接获取边对应的property value的话会因为边那俩节点的顺序报错（那个函数假定的图是有向图，这里就是尝试不同的顺序
-    然后来返回数据
-    '''
     def get_edge_property_value(self,property_dict,value):
         # when try to get the edge property, the function refered the graph as directed graph, but we use underected graph
         # so sometimes the order will lead to the failure
@@ -62,10 +57,6 @@ class attack_simulation_algorithm():
             return result
         return result
 
-    '''
-    这个函数是对图进行初始化，给每条边加一个property ：if_break， 然后后面break的时候如果这个if_break为0就是不破坏，为1就是破坏
-    另外这个函数就是上面不是选出来了需要三种策略下破坏的初始边，这里就把那些初始边标注为1
-    '''
     def initial_break(self,name):
         import networkx as nx
         #feed into the nodelist and break the edges at the begin
@@ -77,9 +68,6 @@ class attack_simulation_algorithm():
 
         return graph
 
-    '''
-    这里就是把图里所有if_break为1的边给破坏掉，返回一个破坏之后的图，另外返回一个字典，字典的key是edge，value是该edge对应的current load
-    '''
     def break_the_edge(self,graph):
         # remove the edge where the 'if_break' is 1, and return the graph and node has been removed and there current load
         edge_tb_remove=[]
@@ -98,11 +86,6 @@ class attack_simulation_algorithm():
         self.last_graph = graph
         return graph, edge_be_removed
 
-    '''
-    这一步就是输入破坏后的图以及上面那个字典，然后根据这个字典对周边的边进行新的current_load的更新
-    或许会出现的问题，如果没出现就不要考虑了，如果一个edge的周边所有的edge都崩塌了，就孤立这一个edge然后如果他也崩塌咋办（就没法distribute了，
-    目前代码没考虑，想了一下出现的概率应该不大，所以可以暂时不考虑
-    '''
     def refresh_load(self,graph,broken_edge_dict):
         # this will input a graph, and broken_edge_dict, and return the redistributed graph
         # broken_edge_dict {edge:current_load}
@@ -136,11 +119,6 @@ class attack_simulation_algorithm():
         self.last_graph = graph
         return graph
 
-    '''
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    就是我说的那个停止条件，在下面iterate的时候记得留一下这块的位置
-    '''
-
     def stop_sign(self,break_dict):
         #print(len(self.last_graph.edges))
         if len(self.history_iteration_value)<=100:
@@ -153,15 +131,7 @@ class attack_simulation_algorithm():
 
         self.history_iteration_value.append(len(self.last_graph.edges))
         return False
-    '''
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    iterate就是一步一步的进行传播了，就是先破坏再再分配，然后再破坏，另外还缺一个迭代过程判断边是否需要破坏的函数，上面那个只是初始状态破坏哪一些，
-    还没写每一步迭代的时候需要破坏哪些
-    另外还有一点想法，或许可以作为一点咱们的创新点你考虑一下
-    # 目前存在的问题，当一开始的电网刚开始崩塌的时候，这种再分配确实会存在，但是当大规模崩塌发生的时候，很多发电站以及用户节点就会降低，这样的话负载值相应的应该也会降低
-    # 上面这个或许可以通过再写一个refresh函数来解决，就是说第一个崩溃后的refresh完成后，第二个refresh根据某种比例降低current load的值
 
-    '''
     def iterate_algorithm(self):
         #recursive algorithm, will repeatedly call itself if stop_sign condition isn't met
         tobe_break = {} # edges to be broken in this round, stored in dictionary format
