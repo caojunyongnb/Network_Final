@@ -7,7 +7,6 @@ import csv
 import load_model
 from load_model import load_model
 from iterate_simulation import *
-# 这个就是创建了那个loadmodel的对象然后返回的load_graph就是我们需要的负载模型，
 from iterate_simulation_for_node import attack_simulation_algorithm_node
 """lm = load_model('power-US-Grid.mtx', theta=1.2, T=1.2)
 load_graph = lm.graphMitload()"""
